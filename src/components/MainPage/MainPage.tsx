@@ -10,7 +10,7 @@ export const MainPage: React.FC<MainPageProps> = ({ onStartQuiz }) => {
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
       style={{
-        backgroundImage: "url('/background.avif')"
+        backgroundImage: "url('/test_4.jpg')"
       }}
     >
       {/* Overlay */}

@@ -55,7 +55,7 @@ export const QuizPage: React.FC<QuizPageProps> = ({
     <div
       className="min-h-screen w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-start relative"
       style={{
-        backgroundImage: "url('/background.avif')",
+        backgroundImage: "url('/test_4.jpg')",
       }}
     >
       {/* Overlay */}
