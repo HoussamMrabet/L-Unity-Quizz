@@ -64,7 +64,7 @@ export const QuizPage: React.FC<QuizPageProps> = ({
       {/* Main content wrapper */}
       <div className="container relative z-10 w-full px-4 py-4 flex flex-col flex-grow">
         {/* Header with Back Button */}
-        <div className="flex items-center justify-between mb-4">
+        {/* <div className="flex items-center justify-between mb-4">
           <button
             onClick={onBackToMain}
             className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors duration-200"
@@ -76,7 +76,7 @@ export const QuizPage: React.FC<QuizPageProps> = ({
             L Unity Quizz
           </h1>
           <div className="w-[140px]"></div>
-        </div>
+        </div> */}
 
         {/* Timer */}
         <div className="mb-6 sticky top-6 z-20 ">

@@ -21,7 +21,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
     id: 'champions',
     name: 'Champions',
     color: 'blue',
-    bg: '/background.png',
+    bg: '/champs.jpg',
     questions: [
       {
         id: 'champ-100',
@@ -112,6 +112,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
     id: 'items',
     name: 'Items & Build',
     color: 'green',
+    bg: '/items.webp',
     questions: [
       {
         id: 'item-100',
@@ -196,6 +197,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
     id: 'esports',
     name: 'Esports',
     color: 'purple',
+    bg: '/esports.avif',
     questions: [
       {
         id: 'esports-100',
@@ -278,6 +280,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
     id: 'lore',
     name: 'Lore & Story',
     color: 'orange',
+    bg: '/story.avif',
     questions: [
       {
         id: 'lore-100',
@@ -360,6 +363,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
     id: 'gameplay',
     name: 'Gameplay',
     color: 'red',
+    bg: '/gameplay.webp',
     questions: [
       {
         id: 'gameplay-100',
