@@ -1,6 +1,8 @@
-import type React from "react"
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { ChevronRight } from "lucide-react";
+import { FaDiscord } from "react-icons/fa";
+import { MdEventAvailable } from "react-icons/md";
 
 interface Reward {
   id: number
@@ -25,6 +27,10 @@ export const MainPage: React.FC = () => {
     setCurrentSlide((prev) => (prev + 1) % rewards.length)
   }
 
+  const handleJoinDiscord = (): void => {
+    // Replace with your actual Discord server invite link
+    window.open('https://discord.gg/3mrCj6xE', '_blank')
+  }
   // Get 4 visible rewards with circular wrapping
   const getVisibleRewards = (): Reward[] => {
     const visible: Reward[] = []
@@ -49,14 +55,22 @@ export const MainPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
       </div>
 
+      {/* Discord Server Logo - Top Right */}
+      <div className="absolute top-6 right-6 z-20 flex items-center gap-3 bg-slate-900/80 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+        <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+          <img src="/lunity.png" alt="LUnity" className="w-8 h-8 bg-contain text-white" />
+          {/* <FaDiscord className="w-5 h-5 text-white" /> */}
+        </div>
+        <span className="text-white font-medium text-sm">Hosted by LUnity Server</span>
+      </div>
       <div className="relative z-10 container mx-auto px-6 py-12 min-h-screen flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="order-2 lg:order-1 space-y-8">
             {/* Title and Description */}
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                <span className="bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
                   L Unity
                 </span>
                 <br />
@@ -67,9 +81,20 @@ export const MainPage: React.FC = () => {
                 Join us on <strong>LUnity</strong> for an unforgettable League of Legends quiz event! Prove your knowledge of champions, lore, and game mechanics to win the exclusive <strong>Spirit Blossom: Beyond Pass</strong> and other mystical rewards. Do you have what it takes to transcend the Spirit Realm?
               </p>
 
-              <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300">
-                Join the Event
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 flex items-center justify-center gap-3">
+                  <MdEventAvailable className="w-5 h-5" />
+                  Join the Event
+                </button>
+                
+                <button 
+                  onClick={handleJoinDiscord}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300 flex items-center justify-center gap-3"
+                >
+                  <FaDiscord className="w-5 h-5" />
+                  Join Discord
+                </button>
+              </div>
             </div>
 
             {/* Rewards Slider */}
@@ -114,18 +139,18 @@ export const MainPage: React.FC = () => {
           </div>
 
           {/* Right Character Image */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center order-1 lg:order-2 lg:justify-end">
             <div className="relative">
               {/* Glow Effects */}
               <div className="absolute inset-0 bg-gradient-to-r from-pink-400/30 via-purple-400/30 to-cyan-400/30 rounded-full blur-3xl scale-110 animate-pulse" />
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-2xl" />
 
               {/* Character Image */}
-              <div className="relative z-10">
+              <div className="relative z-10 animate-softBounce" style={{ animationDuration: '3s' }}>
                 <img
                   src="/pass"
                   alt="Spirit Blossom Champion"
-                  className="w-screen h-auto drop-shadow-2xl"
+                  className="w-full lg:w-screen h-auto drop-shadow-2xl"
                 />
               </div>
 
@@ -139,22 +164,6 @@ export const MainPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating Particles Effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 20 }, (_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-white/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-            }}
-          />
-        ))}
       </div>
     </section>
   )
