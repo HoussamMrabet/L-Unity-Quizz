@@ -43,7 +43,7 @@ export const SAMPLE_CATEGORIES: Category[] = [
         pointDeduction: 20,
         imageUrl: '/Vayne.jpg',
         zoomLevel: 300,
-        zoomOrigin: 'bottom-right',
+        zoomOrigin: 'top-left',
         hint: {
           type: 'text',
           content: 'This champion is known as the Emperor of Shurima and commands sand soldiers.'
