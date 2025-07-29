@@ -74,11 +74,11 @@ export const AnswerPopup: React.FC<AnswerPopupProps> = ({
           <div className="text-center">
             <div className="inline-block p-6 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 rounded-xl border border-yellow-400/30 animate-text-reveal">
               <p className="text-3xl font-bold text-white mb-2">{answer}</p>
-              <div className="flex justify-center gap-2">
+              {/* <div className="flex justify-center gap-2">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse delay-100" />
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse delay-200" />
-              </div>
+              </div> */}
             </div>
           </div>
 
