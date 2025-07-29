@@ -31,6 +31,11 @@ export const MainPage: React.FC = () => {
     // Replace with your actual Discord server invite link
     window.open('https://discord.gg/3mrCj6xE', '_blank')
   }
+
+  const handleJoinEvent = (): void => {
+    // Replace with your actual Discord server invite link
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdA-jjtPMrehDP_pJQCNxpKQKJza11ccqhpDNmkGfShVMiXrQ/viewform?usp=header', '_blank')
+  }
   // Get 4 visible rewards with circular wrapping
   const getVisibleRewards = (): Reward[] => {
     const visible: Reward[] = []
@@ -82,7 +87,7 @@ export const MainPage: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 flex items-center justify-center gap-3">
+                <button onClick={handleJoinEvent} className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 flex items-center justify-center gap-3">
                   <MdEventAvailable className="w-5 h-5" />
                   Join the Event
                 </button>
