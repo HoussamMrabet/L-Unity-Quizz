@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Gift, Play } from 'lucide-react';
 
-interface MainPageProps {
-  onStartQuiz: () => void;
-}
+interface MainPageProps {}
 
-export const MainPage: React.FC<MainPageProps> = ({ onStartQuiz }) => {
+export const MainPage: React.FC<MainPageProps> = () => {
+  const navigate = useNavigate();
+
+  const handleStartQuiz = () => {
+    navigate('/quiz');
+  };
+
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center relative"
@@ -63,7 +68,7 @@ export const MainPage: React.FC<MainPageProps> = ({ onStartQuiz }) => {
 
         {/* Start Button */}
         <button
-          onClick={onStartQuiz}
+          onClick={handleStartQuiz}
           className="group bg-gradient-to-r from-[#2371C6] to-[#3DDCFF] hover:from-[#3DDCFF] hover:to-[#7AE5FF] text-white px-12 py-6 rounded-2xl font-bold text-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#5BD8FF]/30"
         >
           <div className="flex items-center gap-4">

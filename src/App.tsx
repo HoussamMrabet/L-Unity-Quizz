@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { Player, AppPage } from './types';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Player } from './types';
 import { INITIAL_PLAYERS, SAMPLE_CATEGORIES } from './data/sampleData';
 import { useTimer } from './hooks/useTimer';
 import { useQuestions } from './hooks/useQuestions';
+import { areAllQuestionsCompleted } from './utils/quizUtils';
 import { MainPage } from './components/MainPage/MainPage';
 import { QuizPage } from './components/QuizPage/QuizPage';
+import { WinnerPage } from './components/WinnerPage/WinnerPage';
 import { 
   savePlayersToStorage, 
   loadPlayersFromStorage, 
@@ -20,7 +22,6 @@ function App() {
     const savedPlayers = loadPlayersFromStorage();
     return savedPlayers || INITIAL_PLAYERS;
   });
-  const [currentPage, setCurrentPage] = useState<AppPage>('main');
   
   const {
     timeLeft,
@@ -59,14 +60,6 @@ function App() {
     saveCategoriesToStorage(categories);
   }, [categories]);
 
-  const handleStartQuiz = () => {
-    setCurrentPage('quiz');
-  };
-
-  const handleBackToMain = () => {
-    setCurrentPage('main');
-  };
-
   const handleResetPlayers = () => {
     clearPlayersFromStorage();
     setPlayers(INITIAL_PLAYERS);
@@ -77,35 +70,58 @@ function App() {
     setCategories(SAMPLE_CATEGORIES);
   };
 
-  if (currentPage === 'main') {
-    return <MainPage onStartQuiz={handleStartQuiz} />;
-  }
+  // Check if all questions are completed
+  const allQuestionsCompleted = areAllQuestionsCompleted(categories);
 
   return (
-    <QuizPage
-      players={players}
-      categories={categories}
-      currentView={currentView}
-      selectedQuestion={selectedQuestion}
-      showAnswer={showAnswer}
-      showHint={showHint}
-      timeLeft={timeLeft}
-      isRunning={isRunning}
-      onUpdatePlayers={setPlayers}
-      onSelectQuestion={selectQuestion}
-      onToggleAnswer={toggleAnswer}
-      onToggleHint={toggleHint}
-      onAdjustZoom={adjustZoom}
-      onBackToCategories={backToCategories}
-      onNextQuestion={nextQuestion}
-      onToggleTimer={toggleTimer}
-      onResetTimer={resetTimer}
-      onSetTimer={setTimer}
-      onAdjustTimer={adjustTimer}
-      onBackToMain={handleBackToMain}
-      onResetPlayers={handleResetPlayers}
-      onResetQuiz={handleResetQuiz}
-    />
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route 
+          path="/quiz" 
+          element={
+            allQuestionsCompleted ? (
+              <Navigate to="/winner" replace />
+            ) : (
+              <QuizPage
+                players={players}
+                categories={categories}
+                currentView={currentView}
+                selectedQuestion={selectedQuestion}
+                showAnswer={showAnswer}
+                showHint={showHint}
+                timeLeft={timeLeft}
+                isRunning={isRunning}
+                onUpdatePlayers={setPlayers}
+                onSelectQuestion={selectQuestion}
+                onToggleAnswer={toggleAnswer}
+                onToggleHint={toggleHint}
+                onAdjustZoom={adjustZoom}
+                onBackToCategories={backToCategories}
+                onNextQuestion={nextQuestion}
+                onToggleTimer={toggleTimer}
+                onResetTimer={resetTimer}
+                onSetTimer={setTimer}
+                onAdjustTimer={adjustTimer}
+                onResetPlayers={handleResetPlayers}
+                onResetQuiz={handleResetQuiz}
+              />
+            )
+          } 
+        />
+        <Route 
+          path="/winner" 
+          element={
+            <WinnerPage
+              players={players}
+              onResetQuiz={handleResetQuiz}
+              onResetPlayers={handleResetPlayers}
+            />
+          } 
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 

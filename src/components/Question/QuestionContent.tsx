@@ -11,26 +11,26 @@ export const QuestionContent: React.FC<QuestionContentProps> = ({
   question,
   onAdjustZoom,
 }) => {
-  const getQuestionTypeIcon = () => {
-    switch (question.type) {
-      case 'audio':
-        return <Volume2 className="w-5 h-5" />;
-      case 'image':
-        return <Image className="w-5 h-5" />;
-      case 'progressive':
-        return <ZoomIn className="w-5 h-5" />;
-      default:
-        return null;
-    }
-  };
+  // const getQuestionTypeIcon = () => {
+  //   switch (question.type) {
+  //     case 'audio':
+  //       return <Volume2 className="w-5 h-5" />;
+  //     case 'image':
+  //       return <Image className="w-5 h-5" />;
+  //     case 'progressive':
+  //       return <ZoomIn className="w-5 h-5" />;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="text-xl text-white mb-4">{question.content}</h3>
         <div className="flex items-center gap-2 text-white">
-          {getQuestionTypeIcon()}
-          <span className="capitalize font-semibold">{question.type}</span>
+          {/* {getQuestionTypeIcon()} */}
+          <span className="capitalize font-semibold">{question.currentPoints}</span>
         </div>
       </div>
 
@@ -65,13 +65,13 @@ export const QuestionContent: React.FC<QuestionContentProps> = ({
             {question.type === 'progressive' && (
               <div className="absolute bottom-4 right-4 flex gap-2">
                 <button
-                  onClick={() => onAdjustZoom(-50)}
+                  onClick={() => onAdjustZoom(-25)}
                   className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-lg transition-colors duration-200"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => onAdjustZoom(50)}
+                  onClick={() => onAdjustZoom(25)}
                   className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-lg transition-colors duration-200"
                 >
                   <Plus className="w-4 h-4" />

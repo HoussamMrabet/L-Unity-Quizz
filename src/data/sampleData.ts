@@ -8,12 +8,6 @@ export const INITIAL_PLAYERS: Player[] = [
   { id: '5', name: 'Summoner 5', score: 0 },
   { id: '6', name: 'Summoner 6', score: 0 },
   { id: '7', name: 'Summoner 7', score: 0 },
-  { id: '8', name: 'Summoner 8', score: 0 },
-  { id: '9', name: 'Summoner 9', score: 0 },
-  { id: '10', name: 'Summoner 10', score: 0 },
-  { id: '11', name: 'Summoner 11', score: 0 },
-  { id: '12', name: 'Summoner 12', score: 0 },
-  { id: '13', name: 'Summoner 13', score: 0 },
 ];
 
 export const SAMPLE_CATEGORIES: Category[] = [
@@ -47,9 +41,9 @@ export const SAMPLE_CATEGORIES: Category[] = [
         currentPoints: 200,
         category: 'champions',
         pointDeduction: 20,
-        imageUrl: '/background.png',
+        imageUrl: '/Vayne.jpg',
         zoomLevel: 300,
-        zoomOrigin: 'bottom-left',
+        zoomOrigin: 'bottom-right',
         hint: {
           type: 'text',
           content: 'This champion is known as the Emperor of Shurima and commands sand soldiers.'
