@@ -120,14 +120,36 @@ export const CompactScoreboard: React.FC<CompactScoreboardProps> = ({
           </div>
         )}
         
-        {/* Rest of the Players - Grid Layout */}
+        {/* Second and Third Place - Special Row */}
         {sortedPlayers.length > 1 && (
+          <div className="mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {sortedPlayers.slice(1, 3).map((player, index) => (
+                <CompactPlayerCard
+                  key={player.id}
+                  player={player}
+                  rank={index + 1}
+                  canRemove={players.length > 1}
+                  isFirstPlace={false}
+                  onIncrementScore={() => handleIncrementScore(player.id)}
+                  onDecrementScore={() => handleDecrementScore(player.id)}
+                  onUpdateScore={(score) => handleUpdateScore(player.id, score)}
+                  onUpdateName={(name) => handleUpdateName(player.id, name)}
+                  onRemovePlayer={() => handleRemovePlayer(player.id)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {/* Rest of the Players (4th place and below) - Grid Layout */}
+        {sortedPlayers.length > 3 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-            {sortedPlayers.slice(1).map((player, index) => (
+            {sortedPlayers.slice(3).map((player, index) => (
               <CompactPlayerCard
                 key={player.id}
                 player={player}
-                rank={index + 1}
+                rank={index + 3}
                 canRemove={players.length > 1}
                 isFirstPlace={false}
                 onIncrementScore={() => handleIncrementScore(player.id)}
