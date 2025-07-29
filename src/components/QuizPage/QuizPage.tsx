@@ -27,6 +27,8 @@ interface QuizPageProps {
   onSetTimer: (seconds: number) => void;
   onAdjustTimer: (seconds: number) => void;
   onBackToMain: () => void;
+  onResetPlayers: () => void;
+  onResetQuiz: () => void;
 }
 
 export const QuizPage: React.FC<QuizPageProps> = ({
@@ -50,6 +52,8 @@ export const QuizPage: React.FC<QuizPageProps> = ({
   onSetTimer,
   onAdjustTimer,
   onBackToMain,
+  onResetPlayers,
+  onResetQuiz,
 }) => {
   return (
     <div
@@ -118,6 +122,8 @@ export const QuizPage: React.FC<QuizPageProps> = ({
             selectedQuestion || categories[0]?.questions[0] || null
           }
           onUpdatePlayers={onUpdatePlayers}
+          onResetPlayers={onResetPlayers}
+          onResetQuiz={onResetQuiz}
         />
       </div>
     </div>

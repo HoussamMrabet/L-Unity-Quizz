@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Player, AppPage } from './types';
 import { INITIAL_PLAYERS, SAMPLE_CATEGORIES } from './data/sampleData';
 import { useTimer } from './hooks/useTimer';
 import { useQuestions } from './hooks/useQuestions';
 import { MainPage } from './components/MainPage/MainPage';
 import { QuizPage } from './components/QuizPage/QuizPage';
+import { 
+  savePlayersToStorage, 
+  loadPlayersFromStorage, 
+  saveCategoriesToStorage, 
+  loadCategoriesFromStorage,
+  clearPlayersFromStorage,
+  clearCategoriesFromStorage
+} from './utils/storageUtils';
 
 function App() {
-  const [players, setPlayers] = useState<Player[]>(INITIAL_PLAYERS);
+  const [players, setPlayers] = useState<Player[]>(() => {
+    const savedPlayers = loadPlayersFromStorage();
+    return savedPlayers || INITIAL_PLAYERS;
+  });
   const [currentPage, setCurrentPage] = useState<AppPage>('main');
   
   const {
@@ -21,6 +33,7 @@ function App() {
 
   const {
     categories,
+    setCategories,
     currentView,
     selectedQuestion,
     showAnswer,
@@ -31,7 +44,20 @@ function App() {
     adjustZoom,
     toggleAnswer,
     toggleHint,
-  } = useQuestions(SAMPLE_CATEGORIES);
+  } = useQuestions(() => {
+    const savedCategories = loadCategoriesFromStorage();
+    return savedCategories || SAMPLE_CATEGORIES;
+  });
+
+  // Save players to localStorage whenever players change
+  useEffect(() => {
+    savePlayersToStorage(players);
+  }, [players]);
+
+  // Save categories to localStorage whenever categories change
+  useEffect(() => {
+    saveCategoriesToStorage(categories);
+  }, [categories]);
 
   const handleStartQuiz = () => {
     setCurrentPage('quiz');
@@ -39,6 +65,16 @@ function App() {
 
   const handleBackToMain = () => {
     setCurrentPage('main');
+  };
+
+  const handleResetPlayers = () => {
+    clearPlayersFromStorage();
+    setPlayers(INITIAL_PLAYERS);
+  };
+
+  const handleResetQuiz = () => {
+    clearCategoriesFromStorage();
+    setCategories(SAMPLE_CATEGORIES);
   };
 
   if (currentPage === 'main') {
@@ -67,6 +103,8 @@ function App() {
       onSetTimer={setTimer}
       onAdjustTimer={adjustTimer}
       onBackToMain={handleBackToMain}
+      onResetPlayers={handleResetPlayers}
+      onResetQuiz={handleResetQuiz}
     />
   );
 }

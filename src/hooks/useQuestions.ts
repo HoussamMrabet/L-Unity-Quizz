@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Question, Category, QuizView } from '../types';
 
-export const useQuestions = (initialCategories: Category[]) => {
+export const useQuestions = (initialCategories: Category[] | (() => Category[])) => {
   const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [currentView, setCurrentView] = useState<QuizView>('categories');
   const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(null);
@@ -109,6 +109,7 @@ export const useQuestions = (initialCategories: Category[]) => {
 
   return {
     categories,
+    setCategories,
     currentView,
     selectedQuestion,
     showAnswer,
