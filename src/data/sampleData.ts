@@ -1007,7 +1007,7 @@ export const SAMPLE_THEMES: Theme[] = [
       },
       {
         id: 'items-by-passive',
-        name: 'Guess the item by passive',
+        name: 'Guess the item by active/passive',
         color: 'green',
         subCategories: [
           {
