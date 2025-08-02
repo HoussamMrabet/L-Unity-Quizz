@@ -1,27 +1,42 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { Player, Question, Category, QuizView } from '../../types';
+import { Player, Question, SubCategory, Category, Theme, QuizView } from '../../types';
 import { CompactTimer } from '../Timer/CompactTimer';
 import { CompactScoreboard } from '../Scoreboard/CompactScoreboard';
 import { QuestionDisplay } from '../Question/QuestionDisplay';
+import { ThemeGrid } from '../Themes/ThemeGrid';
 import { CategoryGrid } from '../Categories/CategoryGrid';
+import { SubCategoryGrid } from '../SubCategories/SubCategoryGrid';
+import { VolumeControl } from '../VolumeControl';
 
 interface QuizPageProps {
   players: Player[];
-  categories: Category[];
+  themes: Theme[];
   currentView: QuizView;
+  selectedTheme: Theme | null;
+  selectedCategory: Category | null;
+  selectedSubCategory: SubCategory | null;
   selectedQuestion: Question | null;
   showAnswer: boolean;
   showHint: boolean;
+  revealedHintClues?: number;
   timeLeft: number;
   isRunning: boolean;
   onUpdatePlayers: (players: Player[]) => void;
+  onSelectTheme: (themeId: string) => void;
+  onSelectCategory: (categoryId: string) => void;
+  onSelectSubCategory: (subCategoryId: string) => void;
   onSelectQuestion: (questionId: string) => void;
   onToggleAnswer: () => void;
   onToggleHint: () => void;
   onAdjustZoom: (change: number) => void;
+  onAdjustBlur?: (change: number) => void;
+  onRevealClue?: () => void;
+  onRevealHintClue?: () => void;
+  onBackToThemes: () => void;
   onBackToCategories: () => void;
+  onBackToSubCategories: () => void;
   onNextQuestion: () => void;
   onToggleTimer: () => void;
   onResetTimer: () => void;
@@ -33,19 +48,31 @@ interface QuizPageProps {
 
 export const QuizPage: React.FC<QuizPageProps> = ({
   players,
-  categories,
+  themes,
   currentView,
+  selectedTheme,
+  selectedCategory,
+  selectedSubCategory,
   selectedQuestion,
   showAnswer,
   showHint,
+  revealedHintClues,
   timeLeft,
   isRunning,
   onUpdatePlayers,
+  onSelectTheme,
+  onSelectCategory,
+  onSelectSubCategory,
   onSelectQuestion,
   onToggleAnswer,
   onToggleHint,
   onAdjustZoom,
+  onAdjustBlur,
+  onRevealClue,
+  onRevealHintClue,
+  onBackToThemes,
   onBackToCategories,
+  onBackToSubCategories,
   onNextQuestion,
   onToggleTimer,
   onResetTimer,
@@ -81,10 +108,10 @@ export const QuizPage: React.FC<QuizPageProps> = ({
             <ArrowLeft className="w-4 h-4" />
             Back to Main
           </button>
-          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5BD8FF] to-[#B2E9F7]">
-            L Unity Quizz
+          <h1 className="hidden md:flex text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#5BD8FF] to-[#B2E9F7]">
+            L Unity Quiz
           </h1>
-          <div className="w-[140px]"></div>
+          <VolumeControl />
         </div>
 
         {/* Timer */}
@@ -101,20 +128,39 @@ export const QuizPage: React.FC<QuizPageProps> = ({
 
         {/* Main Content */}
         <div className="mb-6">
-          {currentView === 'categories' ? (
+          {currentView === 'themes' ? (
+            <ThemeGrid
+              themes={themes}
+              onSelectTheme={onSelectTheme}
+            />
+          ) : currentView === 'categories' && selectedTheme ? (
             <CategoryGrid
-              categories={categories}
+              categories={selectedTheme.categories}
+              onSelectCategory={onSelectCategory}
+              onBackToThemes={onBackToThemes}
+              themeName={selectedTheme.name}
+            />
+          ) : currentView === 'subcategories' && selectedCategory ? (
+            <SubCategoryGrid
+              subCategories={selectedCategory.subCategories}
               onSelectQuestion={onSelectQuestion}
+              onBackToCategories={onBackToCategories}
+              categoryName={selectedCategory.name}
+              themeName={selectedTheme?.name}
             />
           ) : selectedQuestion ? (
             <QuestionDisplay
               question={selectedQuestion}
               showAnswer={showAnswer}
               showHint={showHint}
+             revealedHintClues={revealedHintClues}
               onToggleAnswer={onToggleAnswer}
               onToggleHint={onToggleHint}
               onAdjustZoom={onAdjustZoom}
-              onBackToCategories={onBackToCategories}
+             onAdjustBlur={onAdjustBlur}
+             onRevealClue={onRevealClue}
+             onRevealHintClue={onRevealHintClue}
+              onBackToCategories={onBackToSubCategories}
               onNextQuestion={onNextQuestion}
             />
           ) : null}
@@ -124,7 +170,9 @@ export const QuizPage: React.FC<QuizPageProps> = ({
         <CompactScoreboard
           players={players}
           currentQuestion={
-            selectedQuestion || categories[0]?.questions[0] || null
+            selectedQuestion || 
+            themes[0]?.categories[0]?.subCategories[0]?.questions[0] || 
+            null
           }
           onUpdatePlayers={onUpdatePlayers}
           onResetPlayers={onResetPlayers}

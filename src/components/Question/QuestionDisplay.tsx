@@ -11,9 +11,13 @@ interface QuestionDisplayProps {
   question: Question;
   showAnswer: boolean;
   showHint: boolean;
+  revealedHintClues?: number;
   onToggleAnswer: () => void;
   onToggleHint: () => void;
   onAdjustZoom: (change: number) => void;
+  onAdjustBlur?: (change: number) => void;
+  onRevealClue?: () => void;
+  onRevealHintClue?: () => void;
   onBackToCategories: () => void;
   onNextQuestion: () => void;
 }
@@ -22,9 +26,13 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
   question,
   showAnswer,
   showHint,
+  revealedHintClues = 0,
   onToggleAnswer,
   onToggleHint,
   onAdjustZoom,
+  onAdjustBlur,
+  onRevealClue,
+  onRevealHintClue,
   onBackToCategories,
   onNextQuestion,
 }) => {
@@ -38,35 +46,44 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
               className="flex items-center gap-2 bg-slate-600 hover:bg-slate-500 text-white px-3 py-2 rounded-lg font-semibold transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4" />
-              Categories
+              Back
             </button>
             <HelpCircle className="text-[#5BD8FF] w-6 h-6" />
             <h2 className="text-2xl font-bold text-white">
-              {question.category.charAt(0).toUpperCase() + question.category.slice(1)} - {question.basePoints} Points
+              {question.subCategory.charAt(0).toUpperCase() + question.subCategory.slice(1)} - {question.basePoints} Points
             </h2>
           </div>
         </div>
 
         <div className="space-y-6">
           <div className="bg-slate-700/50 rounded-lg p-6">
-            <QuestionContent question={question} onAdjustZoom={onAdjustZoom} />
+            <QuestionContent 
+              question={question} 
+              onAdjustZoom={onAdjustZoom}
+              onAdjustBlur={onAdjustBlur}
+              onRevealClue={onRevealClue}
+            />
           </div>
 
-          {/* Only show hint section for non-progressive questions */}
-          {question.type !== 'progressive' && (
+          {/* Only show hint section for non-progressive and non-blurred questions */}
+          {question.type !== 'progressive' && question.type !== 'blurred' && (
             <HintSection
               question={question}
               showHint={showHint}
               onToggleHint={onToggleHint}
+              onRevealHintClue={onRevealHintClue}
+              revealedHintClues={revealedHintClues}
             />
           )}
 
-          <AnswerSection
-            answer={question.answer}
-            answerImage={question.answerImage}
-            showAnswer={showAnswer}
-            onToggleAnswer={onToggleAnswer}
-          />
+          {question.answer && (
+            <AnswerSection
+              answer={question.answer}
+              answerImage={question.answerImage}
+              showAnswer={showAnswer}
+              onToggleAnswer={onToggleAnswer}
+            />
+          )}
 
           <PointsManager question={question} />
 
@@ -81,13 +98,14 @@ export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({
         </div>
       </div>
 
-      {/* Answer Popup */}
-      <AnswerPopup
-        isOpen={showAnswer}
-        onClose={onToggleAnswer}
-        answer={question.answer}
-        answerImage={question.answerImage}
-      />
+      {question.answer && (
+        <AnswerPopup
+          isOpen={showAnswer}
+          onClose={onToggleAnswer}
+          answer={question.answer}
+          answerImage={question.answerImage}
+        />
+      )}
     </>
   );
 };

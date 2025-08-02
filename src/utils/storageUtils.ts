@@ -1,7 +1,7 @@
-import { Player, Category } from '../types';
+import { Player, Theme } from '../types';
 
 const PLAYERS_STORAGE_KEY = 'quiz-arena-players';
-const CATEGORIES_STORAGE_KEY = 'quiz-arena-categories';
+const THEMES_STORAGE_KEY = 'quiz-arena-themes';
 
 export const savePlayersToStorage = (players: Player[]): void => {
   try {
@@ -21,20 +21,20 @@ export const loadPlayersFromStorage = (): Player[] | null => {
   }
 };
 
-export const saveCategoriesToStorage = (categories: Category[]): void => {
+export const saveThemesToStorage = (themes: Theme[]): void => {
   try {
-    localStorage.setItem(CATEGORIES_STORAGE_KEY, JSON.stringify(categories));
+    localStorage.setItem(THEMES_STORAGE_KEY, JSON.stringify(themes));
   } catch (error) {
-    console.error('Failed to save categories to localStorage:', error);
+    console.error('Failed to save themes to localStorage:', error);
   }
 };
 
-export const loadCategoriesFromStorage = (): Category[] | null => {
+export const loadThemesFromStorage = (): Theme[] | null => {
   try {
-    const stored = localStorage.getItem(CATEGORIES_STORAGE_KEY);
+    const stored = localStorage.getItem(THEMES_STORAGE_KEY);
     return stored ? JSON.parse(stored) : null;
   } catch (error) {
-    console.error('Failed to load categories from localStorage:', error);
+    console.error('Failed to load themes from localStorage:', error);
     return null;
   }
 };
@@ -47,11 +47,11 @@ export const clearPlayersFromStorage = (): void => {
   }
 };
 
-export const clearCategoriesFromStorage = (): void => {
+export const clearThemesFromStorage = (): void => {
   try {
-    localStorage.removeItem(CATEGORIES_STORAGE_KEY);
+    localStorage.removeItem(THEMES_STORAGE_KEY);
   } catch (error) {
-    console.error('Failed to clear categories from localStorage:', error);
+    console.error('Failed to clear themes from localStorage:', error);
   }
 };
 

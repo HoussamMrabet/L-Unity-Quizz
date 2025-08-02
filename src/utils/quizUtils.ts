@@ -1,17 +1,31 @@
-import { Category } from '../types';
+import { Theme } from '../types';
 
-export const areAllQuestionsCompleted = (categories: Category[]): boolean => {
-  return categories.every(category => 
-    category.questions.every(question => question.isCompleted === true)
+export const areAllQuestionsCompleted = (themes: Theme[]): boolean => {
+  return themes.every(theme => 
+    theme.categories.every(category =>
+      category.subCategories.every(subCategory =>
+        subCategory.questions.every(question => question.isCompleted === true)
+      )
+    )
   );
 };
 
-export const getTotalQuestions = (categories: Category[]): number => {
-  return categories.reduce((total, category) => total + category.questions.length, 0);
+export const getTotalQuestions = (themes: Theme[]): number => {
+  return themes.reduce((total, theme) => 
+    total + theme.categories.reduce((catTotal, category) =>
+      catTotal + category.subCategories.reduce((subTotal, subCategory) =>
+        subTotal + subCategory.questions.length, 0
+      ), 0
+    ), 0
+  );
 };
 
-export const getCompletedQuestions = (categories: Category[]): number => {
-  return categories.reduce((total, category) => 
-    total + category.questions.filter(q => q.isCompleted).length, 0
+export const getCompletedQuestions = (themes: Theme[]): number => {
+  return themes.reduce((total, theme) => 
+    total + theme.categories.reduce((catTotal, category) =>
+      catTotal + category.subCategories.reduce((subTotal, subCategory) =>
+        subTotal + subCategory.questions.filter(q => q.isCompleted).length, 0
+      ), 0
+    ), 0
   );
 };

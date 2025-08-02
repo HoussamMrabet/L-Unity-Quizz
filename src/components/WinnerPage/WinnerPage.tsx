@@ -118,7 +118,7 @@ export const WinnerPage: React.FC<WinnerPageProps> = ({
           <div className="bg-gradient-to-r from-yellow-400/5 via-yellow-400/10 to-yellow-400/5 rounded-2xl border border-yellow-400/20 p-6 mb-6">
             <div className="flex items-center justify-center mb-4">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center shadow-lg">
-                <img src="/spirit.png" alt="Spirit Blossom" className="w-16 h-16 rounded-full" />
+                <img src="/pass" alt="Spirit Blossom" className="w-16 h-16 rounded-full" />
               </div>
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">

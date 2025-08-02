@@ -11,7 +11,7 @@ export const updatePlayerScore = (
 ): Player[] => {
   return players.map((player) =>
     player.id === playerId 
-      ? { ...player, score: Math.max(0, player.score + scoreChange) } 
+      ? { ...player, score: player.score + scoreChange } 
       : player
   );
 };

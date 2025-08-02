@@ -30,7 +30,7 @@ export const Scoreboard: React.FC<ScoreboardProps> = ({
 
   const handleUpdateScore = (playerId: string, newScore: number) => {
     const updatedPlayers = players.map((player) =>
-      player.id === playerId ? { ...player, score: Math.max(0, newScore) } : player
+      player.id === playerId ? { ...player, score: newScore } : player
     );
     onUpdatePlayers(updatedPlayers);
   };

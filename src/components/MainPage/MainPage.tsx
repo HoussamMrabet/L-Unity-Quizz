@@ -1,8 +1,7 @@
 import type React from "react";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Play } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
-import { MdEventAvailable } from "react-icons/md";
 
 interface Reward {
   id: number
@@ -11,12 +10,13 @@ interface Reward {
 }
 
 const rewards: Reward[] = [
-  { id: 1, title: "Spirit Orb", image: "/orb" },
-  { id: 2, title: "Prestige Spirit Blossom Zed", image: "/zed.webp" },
-  { id: 3, title: "Mythic Essence", image: "/mythic.webp" },
-  { id: 4, title: "Orange Essence", image: "/orange.webp" },
-  { id: 5, title: "Nightbringer Evelynn", image: "/evelynn.webp" },
-  { id: 6, title: "Dawnbringer Janna", image: "/janna.webp" },
+  { id: 1, title: "7 Wyldbloom Orbs", image: "/orb" },
+  { id: 2, title: "Prestige Spirit Blossom Zed + icon & border", image: "/zed1.webp" },
+  { id: 3, title: "25 Mythic Essence", image: "/mythic.webp" },
+  { id: 4, title: "1025 Orange Essence", image: "/orange.webp" },
+  { id: 5, title: "Nightbringer Evelynn + icon & border", image: "/evelynn1.jpg" },
+  { id: 6, title: "Dawnbringer Janna + icon & border", image: "/janna1.jpg" },
+  { id: 7, title: "3 Anciant Spark", image: "/spark.png" },
 ]
 
 export const MainPage: React.FC = () => {
@@ -32,10 +32,6 @@ export const MainPage: React.FC = () => {
     window.open('https://discord.gg/3mrCj6xE', '_blank')
   }
 
-  const handleJoinEvent = (): void => {
-    // Replace with your actual Discord server invite link
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdA-jjtPMrehDP_pJQCNxpKQKJza11ccqhpDNmkGfShVMiXrQ/viewform?usp=header', '_blank')
-  }
   // Get 4 visible rewards with circular wrapping
   const getVisibleRewards = (): Reward[] => {
     const visible: Reward[] = []
@@ -53,7 +49,7 @@ export const MainPage: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/bg.png"
+          src="/background.jpeg"
           alt="Spirit Blossom Background"
           className="w-[200vw] h-full object-cover"
         />
@@ -87,10 +83,10 @@ export const MainPage: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={handleJoinEvent} className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 flex items-center justify-center gap-3">
-                  <MdEventAvailable className="w-5 h-5" />
-                  Join the Event
-                </button>
+                <a href="/quiz" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-300 flex items-center justify-center gap-3">
+                  <Play className="w-5 h-5" />
+                  Start Quiz
+                </a>
                 
                 <button 
                   onClick={handleJoinDiscord}
@@ -111,14 +107,14 @@ export const MainPage: React.FC = () => {
                   {visibleRewards.map((reward) => (
                     <div
                       key={reward.id}
-                      className="relative aspect-square rounded-lg bg-white/5 p-2 flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+                      className="relative aspect-square rounded-lg bg-white/5 flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
                       onMouseEnter={() => setHoveredReward(reward.id)}
                       onMouseLeave={() => setHoveredReward(null)}
                     >
                       <img
                         src={reward.image}
                         alt={reward.title}
-                        className="max-h-full max-w-full object-contain"
+                        className="h-full w-full object-cover"
                       />
                       
                       {/* Tooltip */}

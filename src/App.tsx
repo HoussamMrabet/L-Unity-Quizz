@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Player } from './types';
-import { INITIAL_PLAYERS, SAMPLE_CATEGORIES } from './data/sampleData';
+import { INITIAL_PLAYERS, SAMPLE_THEMES } from './data/sampleData';
 import { useTimer } from './hooks/useTimer';
 import { useQuestions } from './hooks/useQuestions';
 import { areAllQuestionsCompleted } from './utils/quizUtils';
@@ -9,12 +9,12 @@ import { MainPage } from './components/MainPage/MainPage';
 import { QuizPage } from './components/QuizPage/QuizPage';
 import { WinnerPage } from './components/WinnerPage/WinnerPage';
 import { 
-  savePlayersToStorage, 
+  savePlayersToStorage,
   loadPlayersFromStorage, 
-  saveCategoriesToStorage, 
-  loadCategoriesFromStorage,
+  saveThemesToStorage, 
+  loadThemesFromStorage,
   clearPlayersFromStorage,
-  clearCategoriesFromStorage
+  clearThemesFromStorage
 } from './utils/storageUtils';
 
 function App() {
@@ -33,21 +33,33 @@ function App() {
   } = useTimer(30);
 
   const {
-    categories,
-    setCategories,
+    themes,
+    setThemes,
     currentView,
+    selectedTheme,
+    selectedCategory,
+    selectedSubCategory,
     selectedQuestion,
     showAnswer,
     showHint,
+    revealedHintClues,
+    selectTheme,
+    selectCategory,
+    selectSubCategory,
     selectQuestion,
+    backToThemes,
     backToCategories,
+    backToSubCategories,
     nextQuestion,
     adjustZoom,
     toggleAnswer,
     toggleHint,
+    revealClue,
+    revealHintClue,
+    adjustBlur,
   } = useQuestions(() => {
-    const savedCategories = loadCategoriesFromStorage();
-    return savedCategories || SAMPLE_CATEGORIES;
+    const savedThemes = loadThemesFromStorage();
+    return savedThemes || SAMPLE_THEMES;
   });
 
   // Save players to localStorage whenever players change
@@ -55,10 +67,10 @@ function App() {
     savePlayersToStorage(players);
   }, [players]);
 
-  // Save categories to localStorage whenever categories change
+  // Save themes to localStorage whenever themes change
   useEffect(() => {
-    saveCategoriesToStorage(categories);
-  }, [categories]);
+    saveThemesToStorage(themes);
+  }, [themes]);
 
   const handleResetPlayers = () => {
     clearPlayersFromStorage();
@@ -66,12 +78,12 @@ function App() {
   };
 
   const handleResetQuiz = () => {
-    clearCategoriesFromStorage();
-    setCategories(SAMPLE_CATEGORIES);
+    clearThemesFromStorage();
+    setThemes(SAMPLE_THEMES);
   };
 
   // Check if all questions are completed
-  const allQuestionsCompleted = areAllQuestionsCompleted(categories);
+  const allQuestionsCompleted = areAllQuestionsCompleted(themes);
 
   return (
     <Router>
@@ -85,19 +97,31 @@ function App() {
             ) : (
               <QuizPage
                 players={players}
-                categories={categories}
+                themes={themes}
                 currentView={currentView}
+                selectedTheme={selectedTheme}
+                selectedCategory={selectedCategory}
+                selectedSubCategory={selectedSubCategory}
                 selectedQuestion={selectedQuestion}
                 showAnswer={showAnswer}
                 showHint={showHint}
+                revealedHintClues={revealedHintClues}
                 timeLeft={timeLeft}
                 isRunning={isRunning}
                 onUpdatePlayers={setPlayers}
+                onSelectTheme={selectTheme}
+                onSelectCategory={selectCategory}
+                onSelectSubCategory={selectSubCategory}
                 onSelectQuestion={selectQuestion}
                 onToggleAnswer={toggleAnswer}
                 onToggleHint={toggleHint}
                 onAdjustZoom={adjustZoom}
+               onAdjustBlur={adjustBlur}
+                onRevealClue={revealClue}
+                onRevealHintClue={revealHintClue}
+                onBackToThemes={backToThemes}
                 onBackToCategories={backToCategories}
+                onBackToSubCategories={backToSubCategories}
                 onNextQuestion={nextQuestion}
                 onToggleTimer={toggleTimer}
                 onResetTimer={resetTimer}

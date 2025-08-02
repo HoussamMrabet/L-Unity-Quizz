@@ -126,7 +126,7 @@ export const CompactPlayerCard: React.FC<CompactPlayerCardProps> = ({
           <input
             type="text"
             value={player.name}
-            onChange={(e) => onUpdateName(e.target.value)}
+            onChange={(e) => onUpdateScore(parseInt(e.target.value) || 0)}
             className="w-full bg-transparent text-white font-semibold text-sm border-none outline-none focus:bg-slate-700/50 rounded px-2 py-1 transition-colors duration-200"
             placeholder="Summoner name"
           />

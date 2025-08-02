@@ -3,13 +3,23 @@ import { Category } from '../../types';
 
 interface CategoryCardProps {
   category: Category;
-  onSelectQuestion: (questionId: string) => void;
+  onSelectCategory: (categoryId: string) => void;
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   category,
-  onSelectQuestion,
+  onSelectCategory,
 }) => {
+  const totalQuestions = category.subCategories.reduce((total, subCategory) => 
+    total + subCategory.questions.length, 0
+  );
+
+  const completedQuestions = category.subCategories.reduce((total, subCategory) => 
+    total + subCategory.questions.filter(q => q.isCompleted).length, 0
+  );
+
+  const isCompleted = totalQuestions > 0 && completedQuestions === totalQuestions;
+
   const gradientColorMap: Record<string, { from: string; to: string }> = {
     red: { from: 'from-red-600', to: 'to-red-800' },
     blue: { from: 'from-blue-600', to: 'to-blue-800' },
@@ -26,67 +36,104 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
   const color = category.color || 'gray';
   const gradient = gradientColorMap[color] || gradientColorMap['gray'];
 
+  const handleClick = () => {
+    if (!isCompleted) {
+      onSelectCategory(category.id);
+    }
+  };
+
   if (category.bg != undefined && category.bg != '') {
     return (
       <div
-        className="relative rounded-xl shadow-lg bg-cover bg-center bg-no-repeat overflow-hidden"
+        className={`relative rounded-xl shadow-lg bg-cover bg-center bg-no-repeat overflow-hidden transform transition-all duration-300 ${
+          isCompleted 
+            ? 'cursor-not-allowed opacity-50 grayscale' 
+            : 'cursor-pointer hover:scale-105 hover:shadow-2xl'
+        }`}
         style={{
           backgroundImage: `url('${category.bg}')`,
         }}
+        onClick={handleClick}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm z-0"></div>
+        <div className={`absolute inset-0 backdrop-blur-sm z-0 ${
+          isCompleted ? 'bg-slate-900/80' : 'bg-slate-900/50'
+        }`}></div>
 
         {/* Content */}
-        <div className="relative z-10 p-4">
-          <h3 className="text-xl font-bold text-white text-center mb-4">
-            {category.name}
-          </h3>
-          <div className="space-y-2">
-            {category.questions.map((question) => (
-              <button
-                key={question.id}
-                onClick={() => onSelectQuestion(question.id)}
-                disabled={question.isCompleted}
-                className={`w-full p-3 rounded-lg font-semibold transition-all duration-200 ${question.isCompleted
-                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                    : 'bg-white/20 hover:bg-white/30 text-white hover:scale-105 hover:shadow-lg'
+        <div className="relative z-10 p-6 h-48 flex flex-col justify-between">
+          <div>
+            <h3 className={`text-2xl font-bold text-center mb-2 ${
+              isCompleted ? 'text-gray-400' : 'text-white'
+            }`}>
+              {category.name}
+            </h3>
+            {isCompleted && (
+              <div className="text-center">
+                <span className="inline-flex items-center gap-2 bg-green-600/20 border border-green-400/30 rounded-lg px-3 py-1 text-green-400 text-sm font-semibold">
+                  ✓ COMPLETED
+                </span>
+              </div>
+            )}
+          </div>
+          
+          <div className="text-center">
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+              <p className={`font-semibold ${isCompleted ? 'text-gray-300' : 'text-white'}`}>
+                {completedQuestions}/{totalQuestions} Questions
+              </p>
+              <div className="w-full bg-white/20 rounded-full h-2 mt-2">
+                <div 
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    isCompleted ? 'bg-green-400' : 'bg-yellow-400'
                   }`}
-              >
-                <div className="flex justify-between items-center">
-                  <span>{question.basePoints} pts</span>
-                  {question.isCompleted && (
-                    <span className="text-xs">✓ DONE</span>
-                  )}
-                </div>
-              </button>
-            ))}
+                  style={{ width: `${totalQuestions > 0 ? (completedQuestions / totalQuestions) * 100 : 0}%` }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   } else {
-    console.log(category.color);
     return (
-      <div className={`bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-xl p-4 shadow-lg border border-white/10`}>
-        <h3 className="text-xl font-bold text-white text-center mb-4">{category.name}</h3>
-        <div className="space-y-2">
-          {category.questions.map((question) => (
-            <button
-              key={question.id}
-              onClick={() => onSelectQuestion(question.id)}
-              disabled={question.isCompleted}
-              className={`w-full p-3 rounded-lg font-semibold transition-all duration-200 ${question.isCompleted
-                  ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                  : 'bg-white/20 hover:bg-white/30 text-white hover:scale-105 hover:shadow-lg'
+      <div 
+        className={`bg-gradient-to-br ${gradient.from} ${gradient.to} rounded-xl p-6 shadow-lg border border-white/10 transform transition-all duration-300 h-48 flex flex-col justify-between ${
+          isCompleted 
+            ? 'cursor-not-allowed opacity-50 grayscale' 
+            : 'cursor-pointer hover:scale-105 hover:shadow-2xl'
+        }`}
+        onClick={handleClick}
+      >
+        <div>
+          <h3 className={`text-2xl font-bold text-center mb-2 ${
+            isCompleted ? 'text-gray-300' : 'text-white'
+          }`}>
+            {category.name}
+          </h3>
+          {isCompleted && (
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 bg-green-600/20 border border-green-400/30 rounded-lg px-3 py-1 text-green-400 text-sm font-semibold">
+                ✓ COMPLETED
+              </span>
+            </div>
+          )}
+        </div>
+        
+        <div className="text-center">
+          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
+            <p className={`font-semibold ${isCompleted ? 'text-gray-300' : 'text-white'}`}>
+              {completedQuestions}/{totalQuestions} Questions
+            </p>
+            <div className="w-full bg-white/20 rounded-full h-2 mt-2">
+              <div 
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  isCompleted ? 'bg-green-400' : 'bg-yellow-400'
                 }`}
-            >
-              <div className="flex justify-between items-center">
-                <span>{question.basePoints} pts</span>
-                {question.isCompleted && <span className="text-xs">✓ DONE</span>}
-              </div>
-            </button>
-          ))}
+                style={{ width: `${totalQuestions > 0 ? (completedQuestions / totalQuestions) * 100 : 0}%` }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
