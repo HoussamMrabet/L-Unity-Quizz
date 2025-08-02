@@ -31,7 +31,7 @@ export const QuestionContent: React.FC<QuestionContentProps> = ({
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-xl text-white mb-4">{question.content}</h3>
+        <h3 className="font-sans text-3xl text-white mb-4 whitespace-pre-line">{question.content}</h3>
         <div className="flex items-center gap-2 text-white">
           {/* {getQuestionTypeIcon()} */}
           <span className="capitalize font-semibold">{question.currentPoints}</span>
