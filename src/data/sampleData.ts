@@ -26,6 +26,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'splash-bronze',
             name: 'Bronze',
             color: 'blue',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'splash-bronze-q1',
@@ -1379,7 +1380,7 @@ export const SAMPLE_THEMES: Theme[] = [
             questions: [
               {
                 id: 'ability-icons-bronze-q1',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/50/belveth.webp',
                 answer: 'Bel\'Veth - Above and Below (W)',
@@ -1392,7 +1393,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-bronze-q2',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/50/blitzcrank.webp',
                 answer: 'Blitzcrank - Power Fist (E)',
@@ -1405,7 +1406,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-bronze-q3',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/50/brand.png',
                 answer: 'Brand - Pillar of Flame (W)',
@@ -1418,7 +1419,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-bronze-q4',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/50/jhin.webp',
                 answer: 'Jhin - Captive Audience (E)',
@@ -1438,7 +1439,7 @@ export const SAMPLE_THEMES: Theme[] = [
             questions: [
               {
                 id: 'ability-icons-gold-q1',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/100/aatrox.webp',
                 answer: 'Aatrox - Infernal Chains (W)',
@@ -1451,7 +1452,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-gold-q2',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/100/akali.webp',
                 answer: 'Akali - Assassin\'s Mark (Passive)',
@@ -1464,7 +1465,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-gold-q3',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/100/caitlyn.webp',
                 answer: 'Caitlyn - Headshot (Passive)',
@@ -1477,7 +1478,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-gold-q4',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/100/illaoui.png',
                 answer: 'Illaoui - Test of Spirit (E)',
@@ -1497,7 +1498,7 @@ export const SAMPLE_THEMES: Theme[] = [
             questions: [
               {
                 id: 'ability-icons-emerald-q1',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/150/briar.webp',
                 answer: 'Briar - Certain Death (R)',
@@ -1510,7 +1511,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-emerald-q2',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/150/milio.webp',
                 answer: 'Milio - Ultra Mega Fire Kick (Q)',
@@ -1523,7 +1524,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-emerald-q3',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/150/nami.webp',
                 answer: 'Nami - Ebb and Flow (W)',
@@ -1536,7 +1537,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-emerald-q4',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/150/seraphine.webp',
                 answer: 'Seraphine - Stage Presence (passive)',
@@ -1556,7 +1557,7 @@ export const SAMPLE_THEMES: Theme[] = [
             questions: [
               {
                 id: 'ability-icons-diamond-q1',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/200/ahri.webp',
                 answer: 'Ahri - Theft (Passive)',
@@ -1569,7 +1570,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-diamond-q2',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/200/ambessa.webp',
                 answer: 'Ambessa - Public Execution (R)',
@@ -1582,7 +1583,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-diamond-q3',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/200/sol.webp',
                 answer: 'Aurelion Sol - Starsurge (E)',
@@ -1595,7 +1596,7 @@ export const SAMPLE_THEMES: Theme[] = [
               },
               {
                 id: 'ability-icons-diamond-q4',
-                type: 'audio',
+                type: 'image',
                 content: 'Guess the ability by icon',
                 imageUrl: '/themes/abilities/icons/200/aurora.webp',
                 answer: 'Aurora - Across the Veil (W)',
