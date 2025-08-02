@@ -84,6 +84,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'splash-gold',
             name: 'Gold',
             color: 'blue',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'gold-q1',
@@ -142,6 +143,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'splash-emerald',
             name: 'Emerald',
             color: 'blue',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'splash-emerald-q1',
@@ -200,6 +202,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'splash-diamond',
             name: 'Diamond',
             color: 'blue',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'splash-diamond-q1',
@@ -265,6 +268,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'quotes-bronze',
             name: 'Bronze',
             color: 'blue',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'quotes-bronze-q1',
@@ -323,6 +327,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'quotes-gold',
             name: 'Gold',
             color: 'blue',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'quotes-gold-q1',
@@ -381,6 +386,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'quotes-emerald',
             name: 'Emerald',
             color: 'blue',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'quotes-emerald-q1',
@@ -439,6 +445,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'quotes-diamond',
             name: 'Diamond',
             color: 'blue',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'quotes-diamond-q1',
@@ -504,6 +511,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'clues-bronze',
             name: 'Bronze',
             color: 'blue',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'clues-bronze-q1',
@@ -586,6 +594,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'clues-emerald',
             name: 'Emerald',
             color: 'blue',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'clues-emerald-q1',
@@ -668,6 +677,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'clues-master',
             name: 'Master',
             color: 'blue',
+            bg: '/master.webp',
             questions: [
               {
                 id: 'clues-master-q1',
@@ -764,6 +774,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'icons-bronze',
             name: 'Bronze',
             color: 'green',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'icons-bronze-q1',
@@ -819,6 +830,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'icons-gold',
             name: 'Gold',
             color: 'green',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'icons-gold-q1',
@@ -874,6 +886,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'icons-emerald',
             name: 'Emerald',
             color: 'green',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'icons-emerald-q1',
@@ -929,6 +942,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'icons-diamond',
             name: 'Diamond',
             color: 'green',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'icons-diamond-q1',
@@ -990,6 +1004,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'passive-bronze',
             name: 'Bronze',
             color: 'green',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'passive-bronze-q1',
@@ -1033,6 +1048,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'passive-gold',
             name: 'Gold',
             color: 'green',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'passive-gold-q1',
@@ -1076,6 +1092,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'passive-emerald',
             name: 'Emerald',
             color: 'green',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'passive-emerald-q1',
@@ -1134,6 +1151,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-sounds-bronze',
             name: 'Bronze',
             color: 'orange',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'ability-sounds-bronze-q1',
@@ -1193,6 +1211,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-sounds-gold',
             name: 'Gold',
             color: 'orange',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'ability-sounds-gold-q1',
@@ -1252,6 +1271,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-sounds-emerald',
             name: 'Emerald',
             color: 'orange',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'ability-sounds-emerald-q1',
@@ -1311,6 +1331,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-sounds-diamond',
             name: 'Diamond',
             color: 'orange',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'ability-sounds-diamond-q1',
@@ -1377,6 +1398,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-icons-bronze',
             name: 'Bronze',
             color: 'orange',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'ability-icons-bronze-q1',
@@ -1436,6 +1458,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-icons-gold',
             name: 'Gold',
             color: 'orange',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'ability-icons-gold-q1',
@@ -1495,6 +1518,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-icons-emerald',
             name: 'Emerald',
             color: 'orange',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'ability-icons-emerald-q1',
@@ -1554,6 +1578,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-icons-diamond',
             name: 'Diamond',
             color: 'orange',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'ability-icons-diamond-q1',
@@ -1620,6 +1645,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-effect-bronze',
             name: 'Bronze',
             color: 'orange',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'ability-effect-bronze-q1',
@@ -1675,6 +1701,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-effect-gold',
             name: 'Gold',
             color: 'orange',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'ability-effect-gold-q1',
@@ -1730,6 +1757,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-effect-emerald',
             name: 'Emerald',
             color: 'orange',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'ability-effect-emerald-q1',
@@ -1785,6 +1813,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'ability-effect-diamond',
             name: 'Diamond',
             color: 'orange',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'ability-effect-diamond-q1',
@@ -1855,6 +1884,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-who-gold',
             name: 'Gold',
             color: 'purple',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'lore-who-gold-q1',
@@ -1898,6 +1928,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-who-emerald',
             name: 'Emerald',
             color: 'purple',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'lore-who-emerald-q1',
@@ -1941,6 +1972,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-who-diamond',
             name: 'Diamond',
             color: 'purple',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'lore-who-diamond-q1',
@@ -1991,6 +2023,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-general-gold',
             name: 'Gold',
             color: 'purple',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'lore-general-gold-q1',
@@ -2031,6 +2064,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-general-emerald',
             name: 'Emerald',
             color: 'purple',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'lore-general-emerald-q1',
@@ -2071,6 +2105,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'lore-general-diamond',
             name: 'Diamond',
             color: 'purple',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'lore-general-diamond-q1',
@@ -2126,6 +2161,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: '300-q1',
             name: '?',
             color: 'red',
+            bg: '/master.webp',
             questions: [
               {
                 id: '300-q1-q1',
@@ -2163,6 +2199,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: '300-q2',
             name: '??',
             color: 'red',
+            bg: '/grandmaster.webp',
             questions: [
               {
                 id: '300-q2-q1',
@@ -2200,6 +2237,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: '300-q3',
             name: '???',
             color: 'red',
+            bg: '/challenger.webp',
             questions: [
               {
                 id: '300-q3-q1',
@@ -2252,6 +2290,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'tier-bronze',
             name: 'Bronze',
             color: 'teal',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'tier-bronze-q1',
@@ -2311,6 +2350,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'tier-gold',
             name: 'Gold',
             color: 'teal',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'tier-gold-q1',
@@ -2370,6 +2410,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'tier-emerald',
             name: 'Emerald',
             color: 'teal',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'tier-emerald-q1',
@@ -2436,6 +2477,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'skinline-bronze',
             name: 'Bronze',
             color: 'teal',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'skinline-bronze-q1',
@@ -2495,6 +2537,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'skinline-gold',
             name: 'Gold',
             color: 'teal',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'skinline-gold-q1',
@@ -2554,6 +2597,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'skinline-emerald',
             name: 'Emerald',
             color: 'teal',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'skinline-emerald-q1',
@@ -2600,6 +2644,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'skinline-diamond',
             name: 'Diamond',
             color: 'teal',
+            bg: '/diamond.webp',
             questions: [
               {
                 id: 'skinline-diamond-q1',
@@ -2640,6 +2685,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'common-bronze',
             name: 'Bronze',
             color: 'teal',
+            bg: '/bronze.webp',
             questions: [
               {
                 id: 'common-bronze-q1',
@@ -2687,6 +2733,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'common-gold',
             name: 'Gold',
             color: 'teal',
+            bg: '/gold.webp',
             questions: [
               {
                 id: 'common-gold-q1',
@@ -2734,6 +2781,7 @@ export const SAMPLE_THEMES: Theme[] = [
             id: 'common-emerald',
             name: 'Emerald',
             color: 'teal',
+            bg: '/emerald.webp',
             questions: [
               {
                 id: 'common-emerald-q1',
