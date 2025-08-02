@@ -2,22 +2,15 @@ import { Player, Question, SubCategory, Category, Theme } from '../types';
 
 export const INITIAL_PLAYERS: Player[] = [
   { id: '1', name: 'medusa', score: 0 },
-  { id: '2', name: 'mchimicha', score: 0 },
-  { id: '3', name: 'Haytamallalk', score: 0 },
-  { id: '4', name: 'ben', score: 0 },
-  { id: '5', name: 'guessoma', score: 0 },
-  { id: '6', name: 'yuuri', score: 0 },
-  { id: '7', name: 'dark flower', score: 0 },
-  { id: '8', name: 'MG.D.DARK', score: 0 },
-  { id: '9', name: 'just me', score: 0 },
-  { id: '10', name: 'Denver3D', score: 0 },
-  { id: '11', name: 'FENIX', score: 0 },
-  { id: '12', name: 'myotaaa', score: 0 },
-  { id: '13', name: 'Zhu Fan', score: 0 },
-  { id: '14', name: 'Penzôx', score: 0 },
-  { id: '15', name: 'NASSROUN', score: 0 },
-  { id: '16', name: 'Danaxus', score: 0 },
-  { id: '17', name: 'anas.v12', score: 0 },
+  { id: '2', name: 'riddler', score: 0 },
+  { id: '3', name: 'just me', score: 0 },
+  { id: '4', name: 'Zhu Fan', score: 0 },
+  { id: '5', name: 'danaxus', score: 0 },
+  { id: '6', name: 'lobster', score: 0 },
+  { id: '7', name: 'morgoth', score: 0 },
+  { id: '8', name: 'nassroon', score: 0 },
+  { id: '9', name: 'amanoe', score: 0 },
+  { id: '10', name: 'myotaaa', score: 0 },
 ];
 
 export const SAMPLE_THEMES: Theme[] = [
